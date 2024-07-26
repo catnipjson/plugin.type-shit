@@ -1,8 +1,9 @@
-import { Patcher } from "enmity";
+import { Plugin, registerPlugin } from "enmity/managers/plugins";
+import { Patcher } from "enmity/patcher";
 import { Messages } from "enmity/metro/common";
 
 // Define the plugin object
-const myPlugin = {
+const MessageAppender: Plugin = {
   // Plugin name
   name: "MessageAppender",
   
@@ -10,7 +11,7 @@ const myPlugin = {
   onStart() {
     // Patching the sendMessage method to append text
     Patcher.before(Messages, "sendMessage", (_, [, msg]) => {
-      msg.content += "\nEnd of Message";
+      msg.content += "\nType Shit";
     });
   },
 
@@ -21,5 +22,6 @@ const myPlugin = {
   }
 };
 
-// Export the plugin for the modding framework to load
-export default myPlugin;
+// Register and export the plugin for the modding framework to load
+registerPlugin(MessageAppender);
+export default MessageAppender;
