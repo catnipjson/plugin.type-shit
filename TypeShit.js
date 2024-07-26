@@ -5,13 +5,13 @@ import { Messages } from "enmity/metro/common";
 // Define the plugin object
 const MessageAppender: Plugin = {
   // Plugin name
-  name: "MessageAppender",
+  name: "skull",
   
   // Plugin initialization method
   onStart() {
     // Patching the sendMessage method to append text
     Patcher.before(Messages, "sendMessage", (_, [, msg]) => {
-      msg.content += "\nType Shit";
+      msg.content += "\n💀💀💀";
     });
   },
 
